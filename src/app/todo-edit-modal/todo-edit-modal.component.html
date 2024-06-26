@@ -1,0 +1,18 @@
+<div class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeEditModal()">&times;</span>
+    <form (submit)="saveEdit()">
+      <input type="text" [(ngModel)]="editTitle" name="editTitle" required />
+      <label>
+        <input
+          type="checkbox"
+          [(ngModel)]="editCompleted"
+          name="editCompleted"
+        />
+        Completed
+      </label>
+      <button type="submit" class="btn_save">Save</button>
+      <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<h2>Add new item</h2>
+<form (submit)="addRecord()">
+  <input
+    type="text"
+    [(ngModel)]="newTitle"
+    name="newTitle"
+    placeholder="Title"
+    required
+  />
+  <label>
+    <input type="checkbox" [(ngModel)]="newCompleted" name="newCompleted" />
+    Completed
+  </label>
+  <button type="submit" class="btn_add">Add</button>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+</form>

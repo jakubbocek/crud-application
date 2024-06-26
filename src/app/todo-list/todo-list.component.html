@@ -1,0 +1,37 @@
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>
+        Title <button id="sortAsc" (click)="sortData('asc')">↑</button
+        ><button id="sortDesc" (click)="sortData('desc')">↓</button>
+        <input
+          type="text"
+          (input)="searchTable($event)"
+          placeholder="Search by title"
+        />
+      </th>
+      <th>Completed</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of filteredData">
+      <td>{{ getUser(item.userId) }}</td>
+      <td>{{ item.title }}</td>
+      <td>{{ item.completed ? 'Yes' : 'No' }}</td>
+      <td>
+        <button class="btn_edit" (click)="openEditModal(item)">Edit</button>
+        <button class="btn_delete" (click)="deleteRecord(item.id)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<app-todo-edit-modal
+  *ngIf="isEditModalOpen"
+  [item]="selectedItem"
+  (close)="closeEditModal()"
+></app-todo-edit-modal>
